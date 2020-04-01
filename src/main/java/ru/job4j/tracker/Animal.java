@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 public class Animal {
     String name;
+
     public Animal() {
         System.out.println("Animal");
     }
@@ -12,6 +13,9 @@ public class Animal {
     }
 
     public static class Predator extends Animal {
+        public Predator() {
+        }
+
         public Predator(String name) {
             super(name);
             System.out.println("Predator");
@@ -19,6 +23,9 @@ public class Animal {
     }
 
     public static class Tiger extends Predator {
+        public Tiger() {
+        }
+
         public Tiger(String name) {
             super(name);
             System.out.println("Tiger");
