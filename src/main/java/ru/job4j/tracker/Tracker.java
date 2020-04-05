@@ -9,15 +9,12 @@ public class Tracker {
     private final Item[] items = new Item[10];
     private int position = 0;
 
-    public Item add(Item item) throws TrackerException {
+    public Item add(Item item) {
         if (item.getName() != null) {
             item.setId(generateId());
             this.items[position++] = item;
-            return item;
-        } else {
-            System.out.println("Impossible to add Item with null Name");
-            throw new TrackerException();
         }
+        return item;
     }
 
     private String generateId() {
@@ -26,18 +23,14 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        if (this.position == 0) {
-            System.out.println("There are no Items in Tracker");
-        }
-        return Arrays.copyOf(this.items, position);
+        if (this.position != 0) {
+            return Arrays.copyOf(this.items, position);
+        } else return null;
     }
 
-    public Item[] findByName(String key) throws TrackerException {
+    public Item[] findByName(String key) {
         if (key != null) {
-            if (this.position == 0) {
-                System.out.println("There are not Items in Tracker");
-                return null;
-            } else {
+            if (this.position != 0) {
                 int size = 0;
                 Item[] itemsFindByName = new Item[position];
                 for (Item x : findAll()) {
@@ -46,37 +39,21 @@ public class Tracker {
                         size++;
                     }
                 }
-                if (size > 0) {
-                    return Arrays.copyOf(itemsFindByName, size);
-                } else {
-                    System.out.println("There is no Item with Name - " + key + " in Tracker");
-                    return null;
-                }
+                return Arrays.copyOf(itemsFindByName, size);
             }
-        } else {
-            System.out.println("Impossible to search Item with null Name");
-            throw new TrackerException();
         }
+        return null;
     }
 
-    public Item findById(String id) throws TrackerException {
+    public Item findById(String id) {
         if (id != null) {
             if (this.position != 0) {
                 for (Item x : findAll()) {
                     if (x.getId().equals(id)) {
                         return x;
-                    } else {
-                        System.out.println("There is no Item with Id - " + id + " in Tracker");
-                        return null;
                     }
                 }
-            } else {
-                System.out.println("There are not Items in Tracker");
-                return null;
             }
-        } else {
-            System.out.println("Impossible to search Item with null ID");
-            throw new TrackerException();
         }
         return null;
     }

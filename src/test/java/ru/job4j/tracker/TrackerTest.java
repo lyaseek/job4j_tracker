@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
     @Test
-    public void whenAddNewItemThenTrackerHasSameItem() throws TrackerException {
+    public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1");
         tracker.add(item);
