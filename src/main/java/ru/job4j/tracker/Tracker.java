@@ -23,38 +23,31 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        if (this.position != 0) {
-            return Arrays.copyOf(this.items, position);
-        } else return null;
+        return Arrays.copyOf(this.items, position);
     }
 
     public Item[] findByName(String key) {
+        int size = 0;
+        Item[] itemsFindByName = new Item[position];
         if (key != null) {
-            if (this.position != 0) {
-                int size = 0;
-                Item[] itemsFindByName = new Item[position];
-                for (Item x : findAll()) {
-                    if (x.getName().equals(key)) {
-                        itemsFindByName[size] = x;
-                        size++;
-                    }
+            for (int i = 0; i < position; i++) {
+                if (items[i].getName().equals(key)) {
+                    itemsFindByName[size] = items[i];
+                    size++;
                 }
-                return Arrays.copyOf(itemsFindByName, size);
             }
         }
-        return null;
+        return Arrays.copyOf(itemsFindByName, size);
     }
 
     public Item findById(String id) {
         if (id != null) {
-            if (this.position != 0) {
-                for (Item x : findAll()) {
-                    if (x.getId().equals(id)) {
-                        return x;
-                    }
+            for (int i = 0; i < position; i++) {
+                if (items[i].getId().equals(id)) {
+                    return items[i];
                 }
             }
         }
-        return null;
+        return new Item("Default");
     }
 }
