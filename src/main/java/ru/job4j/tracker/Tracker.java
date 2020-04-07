@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.SortedMap;
 
 public class Tracker {
+    public static Item itemDefault = new Item("Default");
     private final Item[] items = new Item[10];
     private int position = 0;
 
@@ -48,6 +49,6 @@ public class Tracker {
                 }
             }
         }
-        return new Item("Default");
+        return itemDefault;
     }
 }
