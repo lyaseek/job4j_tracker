@@ -42,13 +42,26 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        if (id != null) {
-            for (int i = 0; i < position; i++) {
-                if (items[i].getId().equals(id)) {
-                    return items[i];
-                }
+        int index = indexOf(id);
+        return index != -1 ? items[index] : ITEM_DEFAULT;
+    }
+
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
             }
         }
-        return ITEM_DEFAULT;
+        return rsl;
+    }
+
+    public boolean replace(String id, Item item) {
+        int index = indexOf(id);
+        if ((index != -1) && (item.getName() != null)) {
+            items[index].setName(item.getName());
+        }
+        return items[index].getName().equals(item.getName());
     }
 }
