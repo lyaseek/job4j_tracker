@@ -64,4 +64,13 @@ public class Tracker {
         }
         return items[index].getName().equals(item.getName());
     }
+
+    public boolean delete(String id) {
+        int index = indexOf(id);
+        items[index] = null;
+        System.arraycopy(items, index + 1, items, index, position - index);
+        items[position - 1] = null;
+        position--;
+        return items[index] != null;
+    }
 }
