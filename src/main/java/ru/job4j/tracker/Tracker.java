@@ -6,7 +6,6 @@ import java.util.Random;
 import java.util.SortedMap;
 
 public class Tracker {
-    public static final Item ITEM_DEFAULT = new Item("Default");
     private final Item[] items = new Item[10];
     private int position = 0;
 
@@ -43,7 +42,7 @@ public class Tracker {
 
     public Item findById(String id) {
         int index = indexOf(id);
-        return index != -1 ? items[index] : ITEM_DEFAULT;
+        return index != -1 ? items[index] : null;
     }
 
     private int indexOf(String id) {
@@ -59,18 +58,22 @@ public class Tracker {
 
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
-        if ((index != -1) && (item.getName() != null)) {
-            items[index].setName(item.getName());
+        System.out.println(index);
+        if (index != -1) {
+            item.setId(id);
+            items[index] = item;
         }
         return items[index].getName().equals(item.getName());
     }
 
     public boolean delete(String id) {
         int index = indexOf(id);
-        items[index] = null;
-        System.arraycopy(items, index + 1, items, index, position - index);
-        items[position - 1] = null;
-        position--;
-        return items[index] != null;
+        if (index != -1) {
+            items[index] = null;
+            System.arraycopy(items, index + 1, items, index, position - index);
+            items[position - 1] = null;
+            position--;
+        }
+        return index == -1 || items[index] != null;
     }
 }

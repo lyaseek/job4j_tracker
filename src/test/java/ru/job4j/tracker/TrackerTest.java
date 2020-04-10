@@ -33,7 +33,7 @@ public class TrackerTest {
         tracker.add(bug);
         String id = bug.getId();
         tracker.delete(id);
-        assertThat(tracker.findById(id), is(tracker.ITEM_DEFAULT));
+        assertThat(tracker.findById(id), is(nullValue()));
     }
 
 }
