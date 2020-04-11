@@ -58,12 +58,11 @@ public class Tracker {
 
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
-        System.out.println(index);
         if (index != -1) {
             item.setId(id);
             items[index] = item;
         }
-        return items[index].getName().equals(item.getName());
+        return index != -1;
     }
 
     public boolean delete(String id) {
@@ -74,6 +73,6 @@ public class Tracker {
             items[position - 1] = null;
             position--;
         }
-        return index == -1 || items[index] != null;
+        return index != -1;
     }
 }
