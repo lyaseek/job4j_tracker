@@ -3,7 +3,6 @@ package ru.job4j.tracker;
 import java.util.Scanner;
 
 public class StartUI {
-
     public void init(Scanner scanner, Tracker tracker) throws InterruptedException {
         boolean run = true;
         Item item;
@@ -14,18 +13,7 @@ public class StartUI {
             itemPosition = tracker.findAll();
             this.showMenu();
             System.out.print("Select: ");
-            try {
-                select = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                select = 333;
-            }
-            if ((select > 6) || (select < 0)) {
-                System.out.println("Invalid Menu number");
-                select = 333;
-            } else if ((itemPosition.length == 0) && (select != 0) && (select != 6)) {
-                System.out.println("There're no items in tracker");
-                select = 333;
-            }
+            select = Integer.parseInt(scanner.nextLine());
             switch (select) {
                 case (0): {
                     System.out.println("=== Create a new Item ====");
@@ -93,9 +81,6 @@ public class StartUI {
                 }
                 case (6): {
                     run = false;
-                    break;
-                }
-                case (333): {
                     break;
                 }
             }
