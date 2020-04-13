@@ -4,11 +4,10 @@ public class StartUI {
     public void init(Input input, Tracker tracker) throws InterruptedException {
         boolean run = true;
         Item item;
-        Item[] itemPosition, itemList;
+        Item[] itemList;
         String id, name;
         int select;
         while (run) {
-            itemPosition = tracker.findAll();
             this.showMenu();
             select = input.askInt("Select: ");
             switch (select) {
@@ -21,7 +20,7 @@ public class StartUI {
                 }
                 case (1): {
                     System.out.println("=== Items ====");
-                    for (Item x : itemPosition) {
+                    for (Item x : tracker.findAll()) {
                         System.out.println(x.getId() + " " + x.getName());
                     }
                     break;
