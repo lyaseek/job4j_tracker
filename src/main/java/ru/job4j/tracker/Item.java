@@ -1,8 +1,9 @@
 package ru.job4j.tracker;
 
 import java.util.Objects;
+import java.util.Scanner;
 
-public class Item {
+public class Item  {
     private String id;
     private String name;
 
