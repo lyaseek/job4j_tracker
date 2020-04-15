@@ -31,7 +31,7 @@ public class Tracker {
         Item[] itemsFindByName = new Item[position];
         if (key != null) {
             for (int i = 0; i < position; i++) {
-                if (items[i].getName().equals(key)) {
+                if (items[i].getName().equalsIgnoreCase(key)) {
                     itemsFindByName[size] = items[i];
                     size++;
                 }

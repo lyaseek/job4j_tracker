@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Item  {
+public class Item {
     private String id;
     private String name;
 
@@ -25,5 +25,10 @@ public class Item  {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Item id= " + this.id + " name= " + this.name;
     }
 }

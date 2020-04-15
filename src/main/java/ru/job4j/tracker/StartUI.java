@@ -11,7 +11,7 @@ public class StartUI {
     public static void showItems(Tracker tracker) {
         System.out.println("=== Items ====");
         for (Item x : tracker.findAll()) {
-            System.out.println(x.getId() + " " + x.getName());
+            System.out.println(x);
         }
     }
 
@@ -20,9 +20,9 @@ public class StartUI {
         String id = input.askStr("Enter id: ");
         Item newItem = new Item(input.askStr("Enter a new name: "));
         if (tracker.replace(id, newItem)) {
-            System.out.println("Item id " + id + " is edited successfully.");
+            System.out.println("Item id= " + id + " is edited successfully.");
         } else {
-            System.out.println("Item id " + id + " doesn't exist.");
+            System.out.println("Item id= " + id + " doesn't exist.");
         }
     }
 
@@ -30,9 +30,9 @@ public class StartUI {
         System.out.println("=== Deleting the Item ====");
         String id = input.askStr("Enter id: ");
         if (tracker.delete(id)) {
-            System.out.println("Item id " + id + " is deleted successfully.");
+            System.out.println("Item id= " + id + " is deleted successfully.");
         } else {
-            System.out.println("Item id " + id + " doesn't exist.");
+            System.out.println("Item id= " + id + " doesn't exist.");
         }
     }
 
@@ -43,7 +43,7 @@ public class StartUI {
         if (item != null) {
             System.out.println(item.getName());
         } else {
-            System.out.println("Item id " + id + " doesn't exist.");
+            System.out.println("Item id= " + id + " doesn't exist.");
         }
     }
 
@@ -53,7 +53,7 @@ public class StartUI {
         Item[] itemList = tracker.findByName(name);
         if (itemList.length != 0) {
             for (Item x : itemList) {
-                System.out.println(x.getId() + " " + x.getName());
+                System.out.println(x);
             }
         } else {
             System.out.println("Items don't exist.");
