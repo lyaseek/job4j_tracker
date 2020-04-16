@@ -60,7 +60,7 @@ public class StartUI {
         }
     }
 
-    public void init(Input input, Tracker tracker) throws InterruptedException {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         int select;
         while (run) {
@@ -99,9 +99,8 @@ public class StartUI {
         }
     }
 
-    private void showMenu() throws InterruptedException {
+    private void showMenu() {
         System.out.println("Menu.");
-        Thread.sleep(1000);
         System.out.println("0. Add new Item");
         System.out.println("1. Show all items");
         System.out.println("2. Edit item");
@@ -111,7 +110,7 @@ public class StartUI {
         System.out.println("6. Exit Program");
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         new StartUI().init(input, tracker);
