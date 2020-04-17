@@ -29,6 +29,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item id= " + this.id + " name= " + this.name;
+        return "Item id = " + String.format("%-20s",this.id) + " name = " + String.format("%-15s",this.name);
     }
+
 }
