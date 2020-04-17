@@ -12,8 +12,8 @@ public class StartUITest {
         String[] answers = {"Fix PC", "Install the App"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        new CreateAction().execute(input,tracker);
-        new CreateAction().execute(input,tracker);
+        new CreateAction().execute(input, tracker);
+        new CreateAction().execute(input, tracker);
         Item created = tracker.findAll()[1];
         Item expected = new Item("Install the App");
         assertThat(created.getName(), is(expected.getName()));
@@ -42,5 +42,15 @@ public class StartUITest {
         new DeleteAction().execute(new StubInput(answers), tracker);
         Item deleted = tracker.findById(item.getId());
         assertThat(deleted, is(nullValue()));
+    }
+
+    @Test
+    public void whenActionIsStubAction() {
+        StubInput input = new StubInput(
+                new String[]{"0"}
+        );
+        StubAction action = new StubAction();
+        new StartUI().init(input, new Tracker(), new UserAction[]{action});
+        assertThat(action.isCall(), is(true));
     }
 }
