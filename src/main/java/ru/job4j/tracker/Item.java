@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Item {
     private String id;
@@ -27,9 +26,10 @@ public class Item {
         this.name = name;
     }
 
+
     @Override
     public String toString() {
-        return "Item id = " + String.format("%-20s",this.id) + " name = " + String.format("%-15s",this.name);
+        return "Item id = " + String.format("%-5s", this.id) + " name = " + String.format("%-5s", this.name);
+        // 20 & 15
     }
-
 }
