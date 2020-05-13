@@ -1,6 +1,9 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.sort;
 
 import org.junit.Test;
+import ru.job4j.tracker.Item;
+import ru.job4j.tracker.sort.SortByNameItem;
+import ru.job4j.tracker.sort.SortReverseByNameItem;
 
 import java.util.Arrays;
 import java.util.List;
